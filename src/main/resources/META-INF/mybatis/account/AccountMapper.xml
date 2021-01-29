@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xd.smartconstruction.mapper.AccountMapper">
+    <resultMap id="BaseResultMap" type="com.xd.smartconstruction.pojo.dto.account.UserDTO">
+        <result column="id"  property="id"/>
+        <result column="name"  property="name"/>
+        <result column="login_name"  property="loginName"/>
+        <result column="sex"  property="sex"/>
+        <result column="age"  property="age"/>
+        <result column="birth"  property="birth"/>
+        <result column="phone" jdbcType="INTEGER" property="phone"/>
+        <result column="avatar"  property="avatar"/>
+        <result column="password"  property="password"/>
+    </resultMap>
+
+    <resultMap id="roleMap" type="com.xd.smartconstruction.pojo.dto.account.RoleDTO">
+        <result column="id"  property="id"/>
+        <result column="role_name"  property="roleName"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, login_name,  sex, age, birth, phone, avatar, password
+    </sql>
+
+    <select id="login" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM account
+        WHERE (login_name = #{loginName} OR phone = #{loginName}) AND password = #{password}
+    </select>
+
+    <select id="listRole" resultMap="roleMap">
+        SELECT role.id, role.role_name FROM role role
+        INNER JOIN account_role_rel rel ON role.id = rel.role_id
+        WHERE rel.user_id = #{userId}
+    </select>
+</mapper>
