@@ -104,7 +104,7 @@ public class AccountController {
     }
 
     @ApiOperation("重置密码")
-    @PostMapping(value = "/getUser")
+    @PostMapping(value = "/resetPassword")
     public ResultVO<Object> resetPassword(@RequestBody UserQueryReqVO requestVO) {
         //如果用户的角色是超级管理员才能进行密码重置
         UserDTO userInfo = SessionGetter.getUserInfo();

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api("新闻模块")
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/news")
 @Slf4j
 public class NewsController {
 }
