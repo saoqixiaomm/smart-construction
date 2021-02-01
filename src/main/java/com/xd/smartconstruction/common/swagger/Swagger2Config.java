@@ -33,7 +33,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包路径
-                .apis(RequestHandlerSelectors.basePackage("com.xd.smartconstruction.controller.account"))
+                .apis(RequestHandlerSelectors.basePackage("com.xd.smartconstruction.controller"))
                 .paths(PathSelectors.any())
                 .build();
 //        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)).build();
