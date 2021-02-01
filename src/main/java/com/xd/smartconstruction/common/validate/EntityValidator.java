@@ -12,6 +12,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.lang.reflect.Field;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 public class EntityValidator {
@@ -60,6 +61,9 @@ public class EntityValidator {
     }
 
     public static <T> void validateAndThrow(T domain, Class<?>... groups) {
+        if (Objects.isNull(domain)) {
+            throw new BaseException(ErrorCodeEnum.PARAM_VALID_ERRPR.getCode(), "请求参数不能为空");
+        }
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         ValidateResult validateResult = convert(validator.validate(domain, groups), new ValidateResult());

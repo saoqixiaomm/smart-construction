@@ -1,4 +1,4 @@
-package com.xd.smartconstruction.pojo.vo;
+package com.xd.smartconstruction.pojo.vo.response.account;
 
 import com.xd.smartconstruction.common.constant.SexEnum;
 import com.xd.smartconstruction.pojo.dto.BaseDTO;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @ApiModel("用户信息模型")
 @Data
-public class UserVO extends BaseDTO {
+public class UserRespVO extends BaseDTO {
 
     @ApiModelProperty("用户id")
     private String id;

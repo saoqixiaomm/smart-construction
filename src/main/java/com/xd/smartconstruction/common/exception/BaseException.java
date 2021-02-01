@@ -15,6 +15,11 @@ public class BaseException extends RuntimeException {
         this.code = code;
     }
 
+    public BaseException(ErrorCodeEnum errorCodeEnum, String message) {
+        super(message);
+        this.code = errorCodeEnum.getCode();
+    }
+
     public BaseException(ErrorCodeEnum errorCodeEnum) {
         super(errorCodeEnum.getMessage());
         this.code = errorCodeEnum.getCode();
